@@ -326,17 +326,15 @@ if(!function_exists('_log')){
 add_action('wp_ajax_tell_me', 'tell_me');  
 add_action('wp_ajax_nopriv_tell_me', 'tell_me'); 
 function tell_me() {
-    // $lat=(double)$_POST['lat']; //ionicから受信した緯度
-	// $lng=(double)$_POST['lng']; //ionicから受信した経度
-	$lat=35.605663;
-	$lng=139.734739;
+    $lat=(double)$_POST['lat']; //ionicから受信した緯度
+	$lng=(double)$_POST['lng']; //ionicから受信した経度
 	$args = array(
         'posts_per_page' => -1,
         'post_content' => '[cft format=0]',
         'post_category'  => array(2),
 		'post_status'      => 'publish'
 	);
-    $keys = array('name','latitude','longitude','male','female','unisex','universal');
+    $keys = array('facility_name','latitude','longitude','male','female','unisex','universal');
     $myposts = get_posts( $args );
     $i=0;
     foreach ($myposts as $post) {

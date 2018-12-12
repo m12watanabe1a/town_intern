@@ -1,10 +1,61 @@
 var toilets = new Array();
 function mark(data){
     for(i=0;i<data.length;i++){
-        toilets[i] = new google.maps.Marker({
-            position: new google.maps.LatLng(data[i]['latitude'], data[i]['longitude']),
-            map: map
-        });
+        if(data[i]["unisex"] == 0 && data[i]["universal"] == 0){ //normal toilet
+            if (data[i]["female"] == 0){
+                toilets[i] = new google.maps.Marker({
+                    position: new google.maps.LatLng(data[i]['latitude'], data[i]['longitude']),
+                    map: map,
+                    icon: {
+                        fillColor: "#00afcc",                //塗り潰し色
+                        fillOpacity: 0.3,                    //塗り潰し透過率
+                        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW, //円を指定
+                        scale: 8,                           //円のサイズ
+                        strokeColor: "#FFFFFF",              //枠の色
+                        strokeWeight: 3                   //枠の透過率
+                    },
+                });
+            } else if (data[i]["male"] == 0){
+                toilets[i] = new google.maps.Marker({
+                    position: new google.maps.LatLng(data[i]['latitude'], data[i]['longitude']),
+                    map: map,
+                    icon: {
+                        fillColor: "#FF0000",                //塗り潰し色
+                        fillOpacity: 0.3,                    //塗り潰し透過率
+                        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW, //円を指定
+                        scale: 8,                           //円のサイズ
+                        strokeColor: "#eb6ea0",              //枠の色
+                        strokeWeight: 3                    //枠の透過率
+                    },
+                });
+            } else {
+                toilets[i] = new google.maps.Marker({
+                    position: new google.maps.LatLng(data[i]['latitude'], data[i]['longitude']),
+                    map: map,
+                    icon: {
+                        fillColor: "#75D701",                //塗り潰し色
+                        fillOpacity: 0.3,                    //塗り潰し透過率
+                        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW, //円を指定
+                        scale: 8,                           //円のサイズ
+                        strokeColor: "#FFFFFF",              //枠の色
+                        strokeWeight: 3                  //枠の透過率
+                    },
+                });
+            }
+        } else {
+            toilets[i] = new google.maps.Marker({
+                position: new google.maps.LatLng(data[i]['latitude'], data[i]['longitude']),
+                map: map,
+                icon: {
+                    fillColor: "#e97f02",                //塗り潰し色
+                    fillOpacity: 0.7,                    //塗り潰し透過率
+                    path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW, //円を指定
+                    scale: 12,                           //円のサイズ
+                    strokeColor: "#FFFFFF",              //枠の色
+                    strokeWeight: 3                    //枠の透過率
+                },
+            });
+        }
         var content= "<b>" + data[i]["facility_name"] + "</b>" + "<br>" + 
             "<table>" +
             "<tr>" +

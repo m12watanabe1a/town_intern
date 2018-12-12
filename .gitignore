@@ -21,4 +21,4 @@ wordpress/sitemap.xml.gz
 
 docker/db/data
 
-App/src/index.html
+App/src/assets/javascript/auth.js

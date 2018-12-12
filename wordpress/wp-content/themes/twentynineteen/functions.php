@@ -306,3 +306,19 @@ require get_template_directory() . '/inc/template-tags.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+
+/**
+ * Functions user added 
+ */
+if(!function_exists('_log')){
+	function _log($message) {
+		if (WP_DEBUG === true) {
+			if (is_array($message) || is_object($message)) {
+				error_log(print_r($message, true));
+			} else {
+				error_log($message);
+			}
+		}
+	}
+}

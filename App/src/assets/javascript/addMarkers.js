@@ -9,18 +9,18 @@ function mark(data){
             "<table>" +
             "<tr>" +
             "<th scope=\"row\">男性用トイレ:</th>" +
-            "<td>" + data[i]["mens"] + "</td>" +
+            "<td>" + data[i]["male"] + "</td>" +
             "</tr>" +
             "<tr>" +
             "<th scope=\"row\">女性用トイレ:</th>" +
-            "<td>" + data[i]["womens"] + "</td>" +
+            "<td>" + data[i]["female"] + "</td>" +
             "</tr>" +
             "<tr>" +
             "<th scope=\"row\"><b>男女共用トイレ:</b></th>" +
             "<td>" + data[i]["unisex"] + "</td>" +
             "</tr>" +
             "<th scope=\"row\"><b>多目的トイレ:</b></th>" +
-            "<td>" + data[i]["disabled"] + "</td>" +
+            "<td>" + data[i]["universal"] + "</td>" +
             "</tr>" +
             
             "</table>"

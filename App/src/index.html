@@ -29,6 +29,14 @@
 
   <link href="build/main.css" rel="stylesheet">
 
+  <!-- User added -->
+  <script type="text/javascript" src="assets/javascript/ajax.js"></script>
+  <script type="text/javascript" src="assets/javascript/mapstyle_setup.js"></script>
+  <script type="text/javascript" src="assets/javascript/initMap.js"></script>
+  <script type="text/javascript" src="assets/javascript/addMarkers.js"></script>
+  <script type="text/javascript" src="assets/javascript/displayInfo.js"></script>
+  <script type="text/javascript" src="assets/javascript/serchbar.js"></script> 
+
 </head>
 <body>
 
@@ -44,6 +52,14 @@
 
   <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
+
+  <!-- User Added -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/plugin/jquery.fn/cross-domain-ajax/jquery.xdomainajax.js"></script>
+
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3cgrbi82RvBtBCtpCUZOM-xnNUxPocN0&libraries=places&callback=initMap">
+  </script>
 
 </body>
 </html>

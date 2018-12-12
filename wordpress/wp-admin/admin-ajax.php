@@ -23,6 +23,7 @@ require_once( dirname( dirname( __FILE__ ) ) . '/wp-load.php' );
 
 /** Allow for cross-domain requests (from the front end). */
 send_origin_headers();
+header("Access-Control-Allow-Origin: *"); // user added
 
 // Require an action parameter
 if ( empty( $_REQUEST['action'] ) )

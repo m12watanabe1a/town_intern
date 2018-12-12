@@ -322,3 +322,44 @@ if(!function_exists('_log')){
 		}
 	}
 }
+
+add_action('wp_ajax_tell_me', 'tell_me');  
+add_action('wp_ajax_nopriv_tell_me', 'tell_me'); 
+function tell_me() {
+    $lat=(double)$_POST['lat']; //ionicから受信した緯度
+	$lng=(double)$_POST['lng']; //ionicから受信した経度
+	$args = array(
+        'posts_per_page' => -1,
+        'category_name' => 'Uncategorized',
+        'author'       => 'admin',
+        'post_status'      => 'draft',
+        'title'=>'OpenData' );
+    $keys = array('name','latitude','longitude');
+    $myposts = get_posts( $args );
+    $i=0;
+    foreach ($myposts as $post) {
+        setup_postdata( $post );
+
+        $data_lat=(double)get_post_meta( $post->ID ,'latitude' ,true);
+        $d_lat = $data_lat - $lat; //オープンデータの緯度とionicから受信した緯度の差
+
+        $data_lng=(double)get_post_meta( $post->ID ,'longitude' ,true);
+        $d_lng = ($data_lng - $lng); //オープンデータの経度とionicから受信した経度の差
+
+        $L=(55.6*$d_lat)**2+(55.6*$d_lng)**2; //角度差から距離の一時近似を算出(単位：km)
+
+        if ( $L<0.1 ) { //100m以内に存在するオープンデータを取得する
+            foreach ($keys as $key){
+                $data[$i][(string)$key] = get_post_meta( $post->ID , $key ,true);
+            }
+            $i++;
+        }
+    }
+    if($i == 0){
+        echo json_encode("error", JSON_UNESCAPED_UNICODE);; //該当するオープンデータがない場合はerrorを返す
+    }
+    else{
+        echo json_encode($data, JSON_UNESCAPED_UNICODE);
+    }
+    die();
+}

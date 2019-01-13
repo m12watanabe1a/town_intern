@@ -1,5 +1,5 @@
 function getData(){
-    var wp_url_admin_ajax = 'http://localhost:8080/wp-admin/admin-ajax.php';
+    var wp_url_admin_ajax = 'http://' + document.location.hostname + ':8080/wp-admin/admin-ajax.php';
     jQuery(function ($){
         $.ajax({
             type: 'POST',
@@ -7,7 +7,6 @@ function getData(){
             crossDomain: true,
             url: wp_url_admin_ajax,
             data: {
-                //action : paket
                 action : "tell_me",
                 'lat': paket[0],
                 'lng': paket[1]

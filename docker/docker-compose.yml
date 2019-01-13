@@ -43,7 +43,7 @@ services:
       - network_mxtoilet
 
 volumes:
-    db_data:
+    db:
 
 networks:
   network_mxtoilet:

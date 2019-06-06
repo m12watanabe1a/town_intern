@@ -13,7 +13,7 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
     networks:
-      - network_mxtoilet
+      - network_mixtoilet
 
   wordpress:
     container_name: "mxtilet_wordpress"
@@ -30,7 +30,7 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
     networks:
-      - network_mxtoilet
+      - network_mixtoilet
   
   phpmyadmin:
     container_name: "mxtilet_phpmyadmin"
@@ -40,11 +40,11 @@ services:
     depends_on:
       - db
     networks:
-      - network_mxtoilet
+      - network_mixtoilet
 
 volumes:
     db:
 
 networks:
-  network_mxtoilet:
+  network_mixtoilet:
     external: true

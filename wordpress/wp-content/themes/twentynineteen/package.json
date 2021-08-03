@@ -42,6 +42,6 @@
     "watch": "chokidar \"**/*.scss\" -c \"npm run build\" --initial"
   },
   "dependencies": {
-    "tar": "^4.4.10"
+    "tar": "^4.4.15"
   }
 }
